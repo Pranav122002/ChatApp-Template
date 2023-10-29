@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const API_BASE_URL =  "http://localhost:5000/api";
+const API_BASE_URL = "http://localhost:5000/api";
 
 export default function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
 
-    // Toast functions
-    const notifyA = (msg) => toast.error(msg);
-    const notifyB = (msg) => toast.success(msg);
+  // Toast functions
+  const notifyA = (msg) => toast.error(msg);
+  const notifyB = (msg) => toast.success(msg);
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const passRegex =
@@ -45,7 +44,7 @@ export default function SignUp() {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-            notifyA(data.error);
+          notifyA(data.error);
         } else {
           navigate("/signin");
           notifyB(data.message);
@@ -58,7 +57,6 @@ export default function SignUp() {
       <div>
         <div>
           <h1>SIGN UP</h1>
-
           <div>
             <input
               type="text"
@@ -71,7 +69,6 @@ export default function SignUp() {
               }}
             />
           </div>
-
           <div>
             <input
               type="email"
@@ -84,7 +81,6 @@ export default function SignUp() {
               }}
             />
           </div>
-
           <div>
             <input
               type="password"
@@ -97,7 +93,6 @@ export default function SignUp() {
               }}
             />
           </div>
-
           <input
             type="submit"
             id="submit-btn"

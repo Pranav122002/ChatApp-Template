@@ -1,13 +1,13 @@
-import React, { createContext, useState } from "react";
+import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-
-// import PersonalChat from "./components/PersonalChat";
+import PersonalChat from "./components/PersonalChat";
 import CommunityChat from "./components/CommunityChat";
-
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -16,14 +16,12 @@ function App() {
         <Routes>
           <Route path="/" element={<SignIn />}></Route>
           <Route path="/home" element={<Home />}></Route>
-
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
-
-
-          {/* <Route path="/personal-chat" element={<PersonalChat />}></Route> */}
+          <Route path="/personal-chat" element={<PersonalChat />}></Route>
           <Route path="/community-chat" element={<CommunityChat />}></Route>
         </Routes>
+        <ToastContainer theme="light" position="top-right" />
       </div>
     </BrowserRouter>
   );

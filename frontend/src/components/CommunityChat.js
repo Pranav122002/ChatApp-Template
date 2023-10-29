@@ -3,7 +3,6 @@ import io from "socket.io-client";
 
 const BASE_URL = "http://localhost:5000";
 const API_BASE_URL = "http://localhost:5000/api";
-
 const socket = io(`${BASE_URL}`);
 
 const Chat = () => {
@@ -94,7 +93,6 @@ const Chat = () => {
                   <p>{message.sender_name} </p>
 
                   <p> {message.message} </p>
-
                   <p>
                     {new Date(message.createdAt).toLocaleTimeString([], {
                       hour: "2-digit",
@@ -109,9 +107,7 @@ const Chat = () => {
             <>
               <p key={index}>
                 <p> {message.sender_name} </p>
-
                 <p> {message.message}</p>
-
                 <p>
                   {new Date(message.createdAt).toLocaleTimeString([], {
                     hour: "2-digit",
@@ -132,7 +128,6 @@ const Chat = () => {
           value={inputValue}
           onChange={handleInputChange}
         />
-
         <button onClick={sendMessage} id="sendbutton">
           Send
         </button>
