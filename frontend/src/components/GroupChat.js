@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:5000";
 const API_BASE_URL = "http://localhost:5000/api";
 const socket = io(`${BASE_URL}`);
 
-const Chat = () => {
+export default function GroupChat() {
   const [userid, setUserId] = useState("");
   const [username, setUserName] = useState("");
 
@@ -13,7 +13,7 @@ const Chat = () => {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/all-messages`)
+    fetch(`${API_BASE_URL}/all-group-messages`)
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
@@ -62,7 +62,7 @@ const Chat = () => {
       createdAt: new Date().toISOString(),
     });
 
-    fetch(`${API_BASE_URL}/save-message`, {
+    fetch(`${API_BASE_URL}/save-group-message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,59 +81,39 @@ const Chat = () => {
 
     setInputValue("");
   };
-
   return (
-    <div>
-      {messages.map((message, index) => (
-        <>
-          {message.sender_id === userid ? (
-            <>
-              <div>
-                <p key={index}>
-                  <p>{message.sender_name} </p>
-
-                  <p> {message.message} </p>
-                  <p>
-                    {new Date(message.createdAt).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </p>
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <p key={index}>
-                <p> {message.sender_name} </p>
-                <p> {message.message}</p>
-                <p>
-                  {new Date(message.createdAt).toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: true,
-                  })}
-                </p>
-              </p>
-            </>
-          )}
-        </>
-      ))}
-
-      <div>
+    <div >
+      <div >
+        {messages.map((message, index) => (
+          <div key={index}>
+            <p>
+              <div>{message.sender_name}</div>
+              <div>{message.message}</div>
+              <span>
+                {new Date(message.createdAt).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: true,
+                })}
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
+      <div >
         <input
-          placeholder="Type your message here.."
+          placeholder="Type your message here..."
           type="text"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button onClick={sendMessage} id="sendbutton">
+        <button onClick={sendMessage} >
           Send
         </button>
       </div>
     </div>
   );
+  
 };
 
-export default Chat;
+

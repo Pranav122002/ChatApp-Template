@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const USER = mongoose.model("USER");
-
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MONGOURI, JWT_SECRET } = require("../keys");
@@ -26,7 +25,6 @@ router.post("/api/signup", async (req, res) => {
     const user = new USER({
       name,
       email,
-
       password: hashedPassword,
     });
 

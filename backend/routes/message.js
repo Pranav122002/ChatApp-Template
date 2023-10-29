@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const MESSAGE = require("../models/message");
+const MESSAGE = require("../models/group_message");
 const PERSONAL_MESSAGE = require("../models/personal_message");
 
-router.get("/api/all-messages", async (req, res) => {
+router.get("/api/all-group-messages", async (req, res) => {
   try {
     const messages = await MESSAGE.find().sort({ createdAt: 1 });
     res.json(messages);
@@ -34,7 +34,7 @@ router.get(
   }
 );
 
-router.post("/api/save-message", async (req, res) => {
+router.post("/api/save-group-message", async (req, res) => {
   const { message, sender_name, sender_id, sender_role } = req.body;
 
   try {
@@ -42,7 +42,6 @@ router.post("/api/save-message", async (req, res) => {
       message: message,
       sender_name: sender_name,
       sender_id: sender_id,
-      sender_role: sender_role,
     });
 
     const savedMessage = await newMessage.save();

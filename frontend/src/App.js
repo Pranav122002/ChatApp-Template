@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import PersonalChat from "./components/PersonalChat";
-import CommunityChat from "./components/CommunityChat";
+import GroupChat from "./components/GroupChat";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import { ToastContainer } from "react-toastify";
@@ -19,7 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/personal-chat" element={<PersonalChat />}></Route>
-          <Route path="/community-chat" element={<CommunityChat />}></Route>
+          <Route path="/group-chat" element={<GroupChat />}></Route>
         </Routes>
         <ToastContainer theme="light" position="top-right" />
       </div>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const personalmessageSchema = new mongoose.Schema(
+const personalMessageSchema = new mongoose.Schema(
   {
     message: {
       type: String,
@@ -30,4 +30,4 @@ const personalmessageSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("PERSONAL_MESSAGE", personalmessageSchema);
+module.exports = mongoose.model("PERSONAL_MESSAGE", personalMessageSchema);

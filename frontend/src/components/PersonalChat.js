@@ -126,6 +126,7 @@ const PersonalChat = () => {
           <h2>{username}</h2>
 
           <div>
+            <div>Click on username to chat with him</div>
             {users.map((user) => (
               <>
                 <p
@@ -138,6 +139,7 @@ const PersonalChat = () => {
                 </p>
               </>
             ))}
+            <hr />
           </div>
         </div>
 
@@ -151,14 +153,14 @@ const PersonalChat = () => {
                   <>
                     <div>
                       <p key={index}>
-                        <p>{message.message}</p>
-                        <p>
+                        <div>{message.message}</div>
+                        <span>
                           {new Date(message.createdAt).toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",
                             hour12: true,
                           })}
-                        </p>
+                        </span>
                       </p>
                     </div>
                   </>

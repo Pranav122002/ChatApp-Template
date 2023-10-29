@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./models/personal_message");
-require("./models/message");
+require("./models/group_message");
 require("./models/user");
 
 app.use(require("./routes/auth"));

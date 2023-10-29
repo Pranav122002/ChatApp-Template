@@ -27,16 +27,4 @@ router.get("/api/user/:id", (req, res) => {
     });
 });
 
-router.get("/api/all-personal-users/:id", async (req, res, next) => {
-  try {
-    const personal_users = await USER.find({
-      _id: { $ne: req.params.id },
-      role: { $in: ["volunteer", "doctor"] },
-    }).select(["email", "name", "_id", "-password"]);
-    return res.json(personal_users);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
 module.exports = router;

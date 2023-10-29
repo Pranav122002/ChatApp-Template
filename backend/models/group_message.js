@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const messageSchema = new mongoose.Schema(
+const groupMessageSchema = new mongoose.Schema(
   {
     message: {
       type: String,
@@ -21,4 +21,4 @@ const messageSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("MESSAGE", messageSchema);
+module.exports = mongoose.model("GROUP_MESSAGE", groupMessageSchema);
